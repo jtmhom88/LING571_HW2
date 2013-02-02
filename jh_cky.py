@@ -5,6 +5,7 @@ import ast
 import nltk
 from nltk.tree import *
 from nltk.draw import tree
+import time
  
 class Pair:
     def __init__(self,x,y):
@@ -108,10 +109,14 @@ if __name__ == '__main__':
         temp = line.strip()
         ll.append(temp)
         tok = nltk.word_tokenize(temp)
+        start_time = time.time()
         T = cky(G,tok)
+        end_time = time.time()
         outfile.write("-----------------------------\n")
         outfile.write("Line %d: %s" % (i,line))
         outfile.write(T)
+        outfile.write("Run time %g\n" % (end_time-start_time))
+        print "Time to run %g" % (end_time-start_time)
         #print "-----------------------------"
         #print "Line %d: %s" % (i,line)
         #print T
